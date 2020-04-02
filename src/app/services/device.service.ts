@@ -56,5 +56,6 @@ export class DeviceService {
     console.log(err);
     return Observable.throw(err.error() || 'Server error');
   }
+  
 }
 
