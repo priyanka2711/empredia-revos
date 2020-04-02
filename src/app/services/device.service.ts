@@ -11,8 +11,8 @@ import { IDeviceHttp } from '../models/http-models/device-http.interface';
 
 @Injectable()
 export class DeviceService {
-  private _deviceUrl = 'https://cosmos-db-api-1584105173809.azurewebsites.net/epredia/v1/naman/devices';
-  private deviceMeetadataUrl = 'https://cosmos-db-api-1584105173809.azurewebsites.net/epredia/v1/1/metadata';
+  private _deviceUrl = 'https://cosmos-db-api-epredia.azurewebsites.net/epredia/v1/naman/devices';
+  private deviceMeetadataUrl = 'https://cosmos-db-api-epredia.azurewebsites.net/epredia/v1/1/metadata';
   devices: any = [];
 
   constructor(private http: HttpClient) {
@@ -28,7 +28,7 @@ export class DeviceService {
 
 
   getDeviceMetadata(device: IDevice) {
-    const url = 'https://cosmos-db-api-1584105173809.azurewebsites.net/epredia/v1/naman/' + device._id + '/metadata'
+    const url = 'https://cosmos-db-api-epredia.azurewebsites.net/epredia/v1/naman/' + device._id + '/metadata'
     return this.http.get(url).pipe(
       catchError(this.handleError)
     );
@@ -43,7 +43,7 @@ export class DeviceService {
   getDeviceEvents(deviceId: string): Observable<IDeviceEvents[]> {
 
     console.log('events id ' + JSON.stringify(deviceId));
-    const url = 'https://cosmos-db-api-1584105173809.azurewebsites.net/epredia/v1/naman/' + deviceId + '/events';
+    const url = 'https://cosmos-db-api-epredia.azurewebsites.net/epredia/v1/naman/' + deviceId + '/events';
     return this.http.get(url).pipe(
       map((res: any) => res.deviceEvents.messages),
       catchError(this.handleError)
